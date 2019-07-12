@@ -42,7 +42,7 @@ function topicComponent(topic) {
   // set the style
   item.classList.add('tab');
 
-  console.log('this is the topicComponent item created: ', item);
+  // console.log('this is the topicComponent item created: ', item);
 
   
   return item
