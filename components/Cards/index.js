@@ -42,6 +42,7 @@ function topicsComponent(objectArticlesByTopic) {
     let articles = objectArticlesByTopic[topic];
     // pass each of the articles into cardComponent, with article object and topic
     articles.forEach(article => cardsContainer.append(cardComponent(article, topic)));
+    // console.log(topic)
   })
 }
 
@@ -66,6 +67,7 @@ function cardComponent(articleObj, topic) {
 
   // set the style aka classes
   card.classList.add('card', topic);
+  card.setAttribute = topic;
   headline.classList.add('headline');
   author.classList.add('author');
   imgContainer.classList.add('img-container');

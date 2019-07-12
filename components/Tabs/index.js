@@ -18,6 +18,7 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
     // iterate over each topic
     topics.forEach(topic => {
       // to create a tab component and add to DOM as child of '.topics'
+      // console.log(topic);
       topicsSec.appendChild(topicComponent(topic));
     })
   })
@@ -39,6 +40,7 @@ function topicComponent(topic) {
   
   // set the style
   item.classList.add('tab');
+  item.setAttribute = topic;
   
   return item
 }

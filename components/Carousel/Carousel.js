@@ -51,6 +51,10 @@ function carousel() {
   carousel.classList.add('carousel');
   left.classList.add('left-button');
   right.classList.add('right-button');
+  mountain.classList.add('fade');
+  computer.classList.add('fade');
+  trees.classList.add('fade');
+  turntable.classList.add('fade');
 
   return carousel;
 }
