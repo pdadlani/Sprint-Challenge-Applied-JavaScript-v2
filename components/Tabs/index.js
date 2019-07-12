@@ -19,6 +19,8 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
     topics.forEach(topic => {
       // to create a tab component and add to DOM as child of '.topics'
       // console.log(topic);
+      topic = (topic === 'node.js') ? 'node' : topic;
+      // console.log(topic);
       topicsSec.appendChild(topicComponent(topic));
     })
   })
@@ -40,7 +42,21 @@ function topicComponent(topic) {
   
   // set the style
   item.classList.add('tab');
-  item.setAttribute = topic;
+  item.setAttribute('data-tab', topic);
+  // console.log('tabs', topic);
+
+  // stretch for tabs filtering
+  item.addEventListener('click', event => {
+    // get all the cards with data-tab attribute
+    const articles = document.querySelectorAll('.card[data-tab]');
+    // iterate through all the cards
+    articles.forEach(article => {
+      // variable for currently selected article topic
+      const articleTopic = article.dataset.tab;
+      // ternary operator to set style if article topic currently selected
+      article.style.display = (articleTopic === topic) ? 'flex' : 'none';
+    })
+  })
   
   return item
 }

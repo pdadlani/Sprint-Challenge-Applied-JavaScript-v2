@@ -66,8 +66,9 @@ function cardComponent(articleObj, topic) {
   imgContainer.append(imgSrc);
 
   // set the style aka classes
-  card.classList.add('card', topic);
-  card.setAttribute = topic;
+  card.classList.add('card');
+  card.setAttribute('data-tab', topic);
+  // console.log('cards', topic);
   headline.classList.add('headline');
   author.classList.add('author');
   imgContainer.classList.add('img-container');
