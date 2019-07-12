@@ -7,3 +7,43 @@
 //
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
+
+const topicsSec = document.querySelector('.topics');
+
+axios.get('https://lambda-times-backend.herokuapp.com/topics')
+  // outcome if promise is a success
+  .then(data => {
+    // console.log('This is your tabs data topics ', data.data.topics)
+    // assign topics to equal node List of all tab topics
+    const topics = data.data.topics;
+    // iterate over each topic
+    topics.forEach(topic => {
+      // to create a tab component and add to DOM as child of '.topics'
+      topicsSec.appendChild(topicComponent(topic));
+    })
+  })
+
+  // outcome if promise is a failure
+  .catch(error => {
+    console.log('There is an issue with your tabs component.', error, 'Please check Tabs.index.js')
+  })
+
+
+function topicComponent(topic) {
+  // create the topic
+  const item = document.createElement('div');
+  
+  // set the content
+  item.textContent = topic;
+  
+  // set up structure - already done in promise success
+  // topicsSec.appendChild(item); 
+  
+  // set the style
+  item.classList.add('tab');
+
+  console.log('this is the topicComponent item created: ', item);
+
+  
+  return item
+}
