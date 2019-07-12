@@ -13,7 +13,6 @@ const topicsSec = document.querySelector('.topics');
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
   // outcome if promise is a success
   .then(data => {
-    // console.log('This is your tabs data topics ', data.data.topics)
     // assign topics to equal node List of all tab topics
     const topics = data.data.topics;
     // iterate over each topic
@@ -37,13 +36,9 @@ function topicComponent(topic) {
   item.textContent = topic;
   
   // set up structure - already done in promise success
-  // topicsSec.appendChild(item); 
   
   // set the style
   item.classList.add('tab');
-
-  // console.log('this is the topicComponent item created: ', item);
-
   
   return item
 }

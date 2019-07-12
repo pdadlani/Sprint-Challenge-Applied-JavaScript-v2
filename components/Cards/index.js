@@ -23,9 +23,9 @@ const cardsContainer = document.querySelector('.cards-container');
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
   // outcome if promise is a success
   .then(data => {
-    // console.log('this is the data from cards axios get ', data);
+    // saving only relevant data from axios.get to variable
     articlesByTopic = data.data.articles;
-    // console.log('these are the articles: ', articlesByTopic);
+    // passing in object of articles by topic into topics Component
     topicsComponent(articlesByTopic);
   })
 
@@ -34,11 +34,13 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
     console.log('There is an error in your Cards/index.js file', error)
   })
 
+// takes object of articles by topic
 function topicsComponent(objectArticlesByTopic) {
+  // for each of the topics
   Object.keys(objectArticlesByTopic).forEach(topic => {
-    // console.log(topic)
+    // select all articles of that topic
     let articles = objectArticlesByTopic[topic];
-    // console.log(articles);
+    // pass each of the articles into cardComponent, with article object and topic
     articles.forEach(article => cardsContainer.append(cardComponent(article, topic)));
   })
 }
@@ -63,7 +65,7 @@ function cardComponent(articleObj, topic) {
   imgContainer.append(imgSrc);
 
   // set the style aka classes
-  card.classList.add('card');
+  card.classList.add('card', topic);
   headline.classList.add('headline');
   author.classList.add('author');
   imgContainer.classList.add('img-container');
